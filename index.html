@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yakoo‼️ v1.4</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body class="light-theme">
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <h1 id="page-title"><i class="fas fa-wallet"></i> Yakoo‼️</h1>
+            </div>
+            <div class="header-right" id="header-user">
+                <!-- Foto profil dan nama akan diisi oleh JavaScript -->
+            </div>
+        </header>
+
+        <!-- Dashboard Page -->
+        <div id="dashboard-page" class="page active">
+            <div class="datetime-section">
+                <div id="live-clock" class="live-clock">00:00:00</div>
+                <div id="current-date" class="current-date">Kamis, 1 Januari 2026</div>
+                <div id="greeting-message" class="greeting-message"></div>
+            </div>
+
+            <section class="balance-section">
+                <h2>Saldo Saat Ini</h2>
+                <div class="balance-amount" id="current-balance">Rp 0</div>
+                
+                <div class="income-expense">
+                    <div class="income">
+                        <span class="label">Masuk</span>
+                        <span class="amount" id="income-total">Rp 0</span>
+                    </div>
+                    <div class="expense">
+                        <span class="label">Keluar</span>
+                        <span class="amount" id="expense-total">Rp 0</span>
+                    </div>
+                </div>
+
+                <!-- Progress Milestone dan Quotes -->
+                <div class="milestone-mini">
+                    <div class="milestone-mini-header">
+                        <span>Milestone</span>
+                        <span id="milestone-mini-percent">0%</span>
+                    </div>
+                    <div class="milestone-mini-bar">
+                        <div class="milestone-mini-fill" id="milestone-mini-progress" style="width: 0%"></div>
+                    </div>
+                    <div class="milestone-mini-quote" id="milestone-mini-quote">
+                        Mulailah dari yang kecil, konsistenlah!
+                    </div>
+                </div>
+            </section>
+
+            <section class="transactions">
+                <div class="section-header">
+                    <h2>Transaksi Terbaru</h2>
+                    <button class="see-all" id="see-all-transactions">Lihat Semua</button>
+                </div>
+                <div id="transactions-list">
+                    <p class="empty-message">Belum ada transaksi</p>
+                </div>
+            </section>
+        </div>
+
+        <!-- Add Transaction Page -->
+        <div id="add-page" class="page">
+            <div class="transaction-form">
+                <div class="form-group">
+                    <label for="amount"><i class="fas fa-money-bill-wave"></i> Jumlah (Rp)</label>
+                    <input type="number" id="amount" placeholder="Masukkan jumlah" required min="1">
+                </div>
+                
+                <div class="form-group">
+                    <label><i class="fas fa-exchange-alt"></i> Jenis Transaksi</label>
+                    <div class="radio-group">
+                        <label class="radio-label income-option active" id="income-label">
+                            <input type="radio" name="type" value="income" checked>
+                            <i class="fas fa-arrow-down"></i> Pemasukan
+                        </label>
+                        <label class="radio-label expense-option" id="expense-label">
+                            <input type="radio" name="type" value="expense">
+                            <i class="fas fa-arrow-up"></i> Pengeluaran
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="description"><i class="fas fa-sticky-note"></i> Keterangan</label>
+                    <input type="text" id="description" placeholder="Misal: Gaji, Makan, dll">
+                </div>
+                
+                <div class="form-group">
+                    <label for="category"><i class="fas fa-tag"></i> Kategori</label>
+                    <select id="category">
+                        <option value="lainnya">Lainnya</option>
+                        <option value="gaji">Gaji</option>
+                        <option value="makanan">Makanan</option>
+                        <option value="transportasi">Transportasi</option>
+                        <option value="hiburan">Hiburan</option>
+                        <option value="belanja">Belanja</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="date"><i class="fas fa-calendar"></i> Tanggal</label>
+                    <input type="date" id="date" value="">
+                </div>
+                
+                <div class="button-group">
+                    <button type="submit" class="btn save-btn" id="submit-transaction">
+                        <i class="fas fa-save"></i> Simpan Transaksi
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- History Page -->
+        <div id="history-page" class="page">
+            <div class="filter-controls">
+                <select id="filter-month">
+                    <option value="">Semua Bulan</option>
+                </select>
+                <select id="filter-type">
+                    <option value="">Semua Jenis</option>
+                    <option value="income">Pemasukan</option>
+                    <option value="expense">Pengeluaran</option>
+                </select>
+            </div>
+            
+            <div id="history-list" class="history-list">
+                <p class="empty-message">Belum ada transaksi</p>
+            </div>
+        </div>
+
+        <!-- Milestone Page -->
+        <div id="milestone-page" class="page">
+            <div class="milestone-content">
+                <div class="milestone-progress-container">
+                    <div class="progress-info">
+                        <span id="milestone-current">Rp 0</span>
+                        <span id="milestone-target">Rp 250.000</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="milestone-progress" style="width: 0%"></div>
+                    </div>
+                    <div class="progress-percent" id="milestone-percent">0%</div>
+                </div>
+                
+                <div class="quote-section">
+                    <i class="fas fa-quote-left quote-icon"></i>
+                    <p id="motivation-quote">Mulailah dari yang kecil, konsistenlah!</p>
+                    <i class="fas fa-quote-right quote-icon"></i>
+                </div>
+                
+                <div class="milestone-settings">
+                    <h3><i class="fas fa-bullseye"></i> Atur Target</h3>
+                    <div class="form-group">
+                        <label for="set-target">Target Milestone (Rp)</label>
+                        <div class="input-with-button">
+                            <input type="number" id="set-target" placeholder="Contoh: 1000000" min="10000">
+                            <button type="button" class="btn-small" id="update-target">Update</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Settings Page -->
+        <div id="settings-page" class="page">
+            <!-- Header khusus untuk pengaturan dengan tema di kanan -->
+            <div class="settings-header">
+                <h2><i class=""></i> </h2>
+                <div class="theme-toggle-header">
+                    <button type="button" class="theme-btn-header light-theme-btn" data-theme="light">
+                        <i class="fas fa-sun"></i>
+                    </button>
+                    <button type="button" class="theme-btn-header dark-theme-btn" data-theme="dark">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="settings-section">
+                <div class="settings-item">
+                    <label for="user-name"><i class="fas fa-user"></i> Nama</label>
+                    <input type="text" id="user-name" placeholder="Masukkan nama anda">
+                </div>
+                
+                <div class="settings-item">
+                    <label for="user-email"><i class="fas fa-envelope"></i> Email (Untuk backup)</label>
+                    <input type="email" id="user-email" placeholder="email@contoh.com">
+                    <p class="note">*Fitur backup via email akan tersedia di versi mendatang</p>
+                </div>
+                
+                <!-- Tema sudah dipindah ke header, jadi hapus dari sini -->
+                
+                <div class="settings-item">
+                    <label><i class="fas fa-text-height"></i> Ukuran Font</label>
+                    <div class="radio-group locked-feature">
+                        <label class="radio-label" data-font-size="small">
+                            <input type="radio" name="font-size" value="small" disabled> Kecil <i class="fas fa-lock"></i>
+                        </label>
+                        <label class="radio-label active" data-font-size="medium">
+                            <input type="radio" name="font-size" value="medium" checked disabled> Sedang <i class="fas fa-lock"></i>
+                        </label>
+                        <label class="radio-label" data-font-size="large">
+                            <input type="radio" name="font-size" value="large" disabled> Besar <i class="fas fa-lock"></i>
+                        </label>
+                    </div>
+                    <p class="note">*Fitur ini akan tersedia di update selanjutnya</p>
+                </div>
+                
+                <div class="settings-item">
+                    <label for="font-family"><i class="fas fa-font"></i> Jenis Font</label>
+                    <select id="font-family" disabled>
+                        <option value="inter">Inter (Default)</option>
+                        <option value="poppins">Poppins</option>
+                        <option value="roboto">Roboto</option>
+                        <option value="arial">Arial</option>
+                    </select>
+                    <p class="note">*Fitur ini akan tersedia di update selanjutnya</p>
+                </div>
+                
+                <div class="settings-item">
+                    <label><i class="fas fa-language"></i> Bahasa</label>
+                    <div class="language-options locked-feature">
+                        <button type="button" class="language-btn active" data-lang="id" disabled>
+                            <span class="flag">🇮🇩</span> Indonesia <i class="fas fa-lock"></i>
+                        </button>
+                        <button type="button" class="language-btn" data-lang="en" disabled>
+                            <span class="flag">🇺🇸</span> English <i class="fas fa-lock"></i>
+                        </button>
+                        <button type="button" class="language-btn" data-lang="en-uk" disabled>
+                            <span class="flag">🇬🇧</span> UK English <i class="fas fa-lock"></i>
+                        </button>
+                        <button type="button" class="language-btn" data-lang="jw" disabled>
+                            <span class="flag">🇮🇩</span> Jawa <i class="fas fa-lock"></i>
+                        </button>
+                    </div>
+                    <p class="note">*Fitur ini akan tersedia di update selanjutnya</p>
+                </div>
+                
+                <div class="settings-item">
+                    <label><i class="fas fa-user-shield"></i> Mode Admin</label>
+                    <div class="admin-toggle">
+                        <label class="switch">
+                            <input type="checkbox" id="admin-mode">
+                            <span class="slider"></span>
+                        </label>
+                        <span class="toggle-text">Aktifkan Mode Admin</span>
+                    </div>
+                    <div class="admin-password" id="admin-password-container" style="display: none;">
+                        <label for="admin-password"><i class="fas fa-key"></i> Password Admin</label>
+                        <input type="password" id="admin-password" placeholder="Masukkan password">
+                        <button type="button" class="btn-small" id="admin-login">Login</button>
+                    </div>
+                    <p class="note">Mode admin memungkinkan edit dan hapus transaksi</p>
+                </div>
+                
+                <div class="settings-item">
+                    <label><i class="fas fa-database"></i> Data</label>
+                    <div class="settings-actions locked-feature">
+                        <button type="button" class="action-btn" id="export-data" disabled>
+                            <i class="fas fa-file-export"></i> Ekspor Data <i class="fas fa-lock"></i>
+                        </button>
+                        <button type="button" class="action-btn" id="import-data" disabled>
+                            <i class="fas fa-file-import"></i> Impor Data <i class="fas fa-lock"></i>
+                        </button>
+                        <button type="button" class="action-btn delete-btn" id="reset-data" disabled>
+                            <i class="fas fa-trash"></i> Reset Data <i class="fas fa-lock"></i>
+                        </button>
+                    </div>
+                    <p class="note">*Fitur ini akan tersedia di update selanjutnya</p>
+                </div>
+
+                <!-- Tombol Save Settings -->
+                <div class="settings-save">
+                    <button type="button" class="btn save-settings-btn" id="save-settings">
+                        <i class="fas fa-save"></i> Simpan Pengaturan
+                    </button>
+                </div>
+                
+                <div class="app-info">
+                    <p>Yakoo‼️ v1.4</p>
+                    <p class="version">Dikembangkan untuk pencatatan keuangan pribadi</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="navigation">
+            <button class="nav-btn active" data-page="dashboard" id="nav-dashboard">
+                <i class="fas fa-home"></i>
+                <span>Dashboard</span>
+            </button>
+            <button class="nav-btn" data-page="add" id="nav-add">
+                <i class="fas fa-plus-circle"></i>
+                <span>Tambah</span>
+            </button>
+            <button class="nav-btn" data-page="history" id="nav-history">
+                <i class="fas fa-history"></i>
+                <span>Histori</span>
+            </button>
+            <button class="nav-btn" data-page="milestone" id="nav-milestone">
+                <i class="fas fa-flag-checkered"></i>
+                <span>Milestone</span>
+            </button>
+            <button class="nav-btn" data-page="settings" id="nav-settings">
+                <i class="fas fa-cog"></i>
+                <span>Pengaturan</span>
+            </button>
+        </nav>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

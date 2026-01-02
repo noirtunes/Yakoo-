@@ -1,0 +1,1253 @@
+/* Reset dan Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #6366f1;
+    --secondary-color: #8b5cf6;
+    --success-color: #10b981;
+    --danger-color: #ef4444;
+    --warning-color: #f59e0b;
+    --info-color: #3b82f6;
+    --light-bg: #ffffff;
+    --light-text: #1f2937;
+    --light-card: #f8fafc;
+    --light-border: #e5e7eb;
+    --dark-bg: #111827;
+    --dark-text: #f9fafb;
+    --dark-card: #1f2937;
+    --dark-border: #374151;
+}
+
+body {
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    background-color: var(--light-bg);
+    color: var(--light-text);
+    min-height: 100vh;
+    transition: all 0.3s ease;
+    font-size: 14px; /* Perkecil dari 16px */
+}
+
+body.dark-theme {
+    background-color: var(--dark-bg);
+    color: var(--dark-text);
+}
+
+.container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 12px; /* Perkecil dari 15px */
+    padding-bottom: 90px; /* Perkecil dari 100px */
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0; /* Perkecil dari 15px */
+    margin-bottom: 12px; /* Perkecil dari 15px */
+    border-bottom: 2px solid var(--light-border);
+}
+
+body.dark-theme .header {
+    border-bottom-color: var(--dark-border);
+}
+
+.header-left h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem; /* Perkecil dari 1.8rem */
+    font-weight: 700;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Perkecil dari 10px */
+    margin: 0;
+}
+
+.header-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.user-avatar {
+    width: 36px; /* Perkecil dari 40px */
+    height: 36px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1rem;
+}
+
+.user-name {
+    font-size: 0.9rem; /* Perkecil */
+    font-weight: 500;
+}
+
+/* Page System */
+.page {
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.page.active {
+    display: block;
+}
+
+/* Dashboard */
+.datetime-section {
+    text-align: center;
+    padding: 16px; /* Perkecil dari 20px */
+    background: rgba(99, 102, 241, 0.1);
+    border-radius: 16px; /* Perkecil dari 20px */
+    color: var(--primary-color);
+    margin-bottom: 16px; /* Perkecil dari 20px */
+    border: 2px solid rgba(99, 102, 241, 0.2);
+}
+
+body.dark-theme .datetime-section {
+    background: rgba(99, 102, 241, 0.15);
+    border-color: rgba(99, 102, 241, 0.3);
+}
+
+.live-clock {
+    font-size: 2.2rem; /* Perkecil dari 2.8rem */
+    font-weight: 700;
+    font-family: 'Poppins', monospace;
+    margin-bottom: 4px; /* Perkecil dari 5px */
+}
+
+.current-date {
+    font-size: 0.9rem; /* Perkecil dari 1rem */
+    opacity: 0.9;
+}
+
+.greeting-message {
+    font-size: 0.9rem;
+    margin-top: 8px;
+    font-style: italic;
+}
+
+/* Balance Section */
+.balance-section {
+    background-color: var(--light-card);
+    border-radius: 16px; /* Perkecil dari 20px */
+    padding: 20px; /* Perkecil dari 25px */
+    margin-bottom: 16px; /* Perkecil dari 20px */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+body.dark-theme .balance-section {
+    background-color: var(--dark-card);
+}
+
+.balance-section h2 {
+    color: var(--light-text);
+    font-size: 0.9rem; /* Perkecil dari 1rem */
+    margin-bottom: 8px; /* Perkecil dari 10px */
+    opacity: 0.7;
+}
+
+body.dark-theme .balance-section h2 {
+    color: var(--dark-text);
+}
+
+.balance-amount {
+    font-size: 2rem; /* Perkecil dari 2.5rem */
+    font-weight: 700;
+    color: var(--primary-color);
+    margin: 12px 0; /* Perkecil dari 15px */
+}
+
+.income-expense {
+    display: flex;
+    gap: 12px; /* Perkecil dari 15px */
+    margin-top: 16px; /* Perkecil dari 20px */
+}
+
+.income, .expense {
+    flex: 1;
+    padding: 12px; /* Perkecil dari 15px */
+    border-radius: 12px; /* Perkecil dari 15px */
+    text-align: center;
+}
+
+.income {
+    background: rgba(16, 185, 129, 0.1);
+    border: 2px solid var(--success-color);
+}
+
+.expense {
+    background: rgba(239, 68, 68, 0.1);
+    border: 2px solid var(--danger-color);
+}
+
+.income .label, .expense .label {
+    display: block;
+    color: var(--light-text);
+    font-size: 0.8rem; /* Perkecil dari 0.9rem */
+    margin-bottom: 4px; /* Perkecil dari 5px */
+}
+
+body.dark-theme .income .label,
+body.dark-theme .expense .label {
+    color: var(--dark-text);
+}
+
+.income .amount {
+    color: var(--success-color);
+    font-weight: 600;
+    font-size: 1rem; /* Perkecil dari 1.1rem */
+}
+
+.expense .amount {
+    color: var(--danger-color);
+    font-weight: 600;
+    font-size: 1rem; /* Perkecil dari 1.1rem */
+}
+
+/* Milestone Mini di Dashboard */
+.milestone-mini {
+    margin-top: 20px;
+    padding: 16px;
+    background: rgba(99, 102, 241, 0.05);
+    border-radius: 12px;
+    border-left: 4px solid var(--primary-color);
+}
+
+body.dark-theme .milestone-mini {
+    background: rgba(99, 102, 241, 0.1);
+}
+
+.milestone-mini-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    color: var(--light-text);
+}
+
+body.dark-theme .milestone-mini-header {
+    color: var(--dark-text);
+}
+
+.milestone-mini-bar {
+    height: 8px; /* Lebih kecil */
+    background-color: var(--light-border);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+body.dark-theme .milestone-mini-bar {
+    background-color: var(--dark-border);
+}
+
+.milestone-mini-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    border-radius: 4px;
+    transition: width 0.5s ease;
+}
+
+.milestone-mini-quote {
+    font-size: 0.85rem;
+    font-style: italic;
+    color: var(--light-text);
+    opacity: 0.8;
+    text-align: center;
+}
+
+body.dark-theme .milestone-mini-quote {
+    color: var(--dark-text);
+}
+
+/* Transactions */
+.transactions {
+    background-color: var(--light-card);
+    border-radius: 16px; /* Perkecil */
+    padding: 16px; /* Perkecil */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+body.dark-theme .transactions {
+    background-color: var(--dark-card);
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px; /* Perkecil */
+}
+
+.section-header h2 {
+    color: var(--light-text);
+    font-size: 1rem; /* Perkecil dari 1.1rem */
+}
+
+body.dark-theme .section-header h2 {
+    color: var(--dark-text);
+}
+
+.see-all {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-weight: 500;
+    cursor: pointer;
+    font-size: 0.85rem; /* Perkecil dari 0.9rem */
+}
+
+#transactions-list {
+    min-height: 80px; /* Perkecil */
+}
+
+.empty-message {
+    text-align: center;
+    color: var(--light-text);
+    opacity: 0.5;
+    padding: 30px 0; /* Perkecil */
+    font-style: italic;
+}
+
+body.dark-theme .empty-message {
+    color: var(--dark-text);
+}
+
+.transaction-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px; /* Perkecil dari 15px */
+    margin-bottom: 8px; /* Perkecil dari 10px */
+    background-color: var(--light-bg);
+    border-radius: 10px; /* Perkecil dari 12px */
+    border-left: 5px solid var(--success-color);
+}
+
+body.dark-theme .transaction-item {
+    background-color: var(--dark-bg);
+}
+
+.transaction-item.expense {
+    border-left-color: var(--danger-color);
+}
+
+.transaction-info {
+    flex: 1;
+}
+
+.transaction-description {
+    font-weight: 500;
+    color: var(--light-text);
+    font-size: 0.9rem; /* Perkecil */
+}
+
+body.dark-theme .transaction-description {
+    color: var(--dark-text);
+}
+
+.transaction-category {
+    font-size: 0.75rem; /* Perkecil dari 0.8rem */
+    color: var(--light-text);
+    opacity: 0.7;
+    margin-top: 2px; /* Perkecil */
+}
+
+body.dark-theme .transaction-category {
+    color: var(--dark-text);
+}
+
+.transaction-date {
+    font-size: 0.7rem; /* Perkecil dari 0.75rem */
+    color: var(--light-text);
+    opacity: 0.6;
+    margin-top: 2px; /* Perkecil */
+}
+
+body.dark-theme .transaction-date {
+    color: var(--dark-text);
+}
+
+.transaction-amount {
+    font-weight: 600;
+    font-size: 0.9rem; /* Perkecil dari 1rem */
+}
+
+.income-amount {
+    color: var(--success-color);
+}
+
+.expense-amount {
+    color: var(--danger-color);
+}
+
+/* Navigation - FIXED VERSION */
+.navigation {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--light-bg);
+    border-top: 2px solid var(--light-border);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 5px; /* Perkecil */
+    max-width: 500px;
+    margin: 0 auto;
+    z-index: 1000;
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.08);
+}
+
+body.dark-theme .navigation {
+    background-color: var(--dark-bg);
+    border-top-color: var(--dark-border);
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.nav-btn {
+    background: none;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px; /* Perkecil dari 5px */
+    color: var(--light-text);
+    opacity: 0.6;
+    font-size: 0.7rem; /* Perkecil dari 0.75rem */
+    padding: 6px 8px; /* Perkecil */
+    border-radius: 10px; /* Perkecil dari 12px */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex: 1;
+    max-width: 80px;
+}
+
+body.dark-theme .nav-btn {
+    color: var(--dark-text);
+}
+
+.nav-btn i {
+    font-size: 1.2rem; /* Perkecil dari 1.4rem */
+    transition: all 0.3s ease;
+}
+
+.nav-btn.active {
+    opacity: 1;
+    background-color: rgba(99, 102, 241, 0.15);
+    color: var(--primary-color);
+    transform: translateY(-4px); /* Perkecil dari 5px */
+}
+
+body.dark-theme .nav-btn.active {
+    background-color: rgba(99, 102, 241, 0.25);
+}
+
+.nav-btn.active i {
+    transform: scale(1.05); /* Perkecil dari 1.1 */
+}
+
+.nav-btn:active {
+    transform: scale(0.95);
+}
+
+/* Form Styles */
+.transaction-form {
+    background-color: var(--light-card);
+    border-radius: 16px; /* Perkecil */
+    padding: 20px; /* Perkecil dari 25px */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+body.dark-theme .transaction-form {
+    background-color: var(--dark-card);
+}
+
+.form-group {
+    margin-bottom: 16px; /* Perkecil dari 20px */
+}
+
+.form-group label {
+    display: block;
+    color: var(--light-text);
+    margin-bottom: 6px; /* Perkecil dari 8px */
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 6px; /* Perkecil dari 8px */
+    font-size: 0.9rem; /* Tambahkan */
+}
+
+body.dark-theme .form-group label {
+    color: var(--dark-text);
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 12px; /* Perkecil dari 14px */
+    border: 2px solid var(--light-border);
+    border-radius: 10px; /* Perkecil dari 12px */
+    font-size: 0.9rem; /* Perkecil dari 1rem */
+    background-color: var(--light-bg);
+    color: var(--light-text);
+    transition: border-color 0.3s;
+}
+
+body.dark-theme .form-group input,
+body.dark-theme .form-group select {
+    background-color: var(--dark-bg);
+    color: var(--dark-text);
+    border-color: var(--dark-border);
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.radio-group {
+    display: flex;
+    gap: 8px; /* Perkecil dari 10px */
+}
+
+.radio-label {
+    flex: 1;
+    padding: 12px; /* Perkecil dari 14px */
+    border: 2px solid var(--light-border);
+    border-radius: 10px; /* Perkecil dari 12px */
+    text-align: center;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px; /* Perkecil dari 8px */
+    background-color: var(--light-bg);
+    color: var(--light-text);
+    font-size: 0.9rem; /* Tambahkan */
+}
+
+body.dark-theme .radio-label {
+    background-color: var(--dark-bg);
+    color: var(--dark-text);
+    border-color: var(--dark-border);
+}
+
+.radio-label input {
+    display: none;
+}
+
+.radio-label.active {
+    background: rgba(99, 102, 241, 0.1);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.radio-label.income-option.active {
+    background: rgba(16, 185, 129, 0.1);
+    border-color: var(--success-color);
+    color: var(--success-color);
+}
+
+.radio-label.expense-option.active {
+    background: rgba(239, 68, 68, 0.1);
+    border-color: var(--danger-color);
+    color: var(--danger-color);
+}
+
+.button-group {
+    margin-top: 24px; /* Perkecil dari 30px */
+}
+
+.btn {
+    width: 100%;
+    padding: 14px; /* Perkecil dari 16px */
+    border: none;
+    border-radius: 10px; /* Perkecil dari 12px */
+    font-weight: 600;
+    font-size: 0.9rem; /* Perkecil dari 1rem */
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.save-btn {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px; /* Perkecil dari 10px */
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+/* History Page */
+.filter-controls {
+    display: flex;
+    gap: 8px; /* Perkecil dari 10px */
+    margin-bottom: 16px; /* Perkecil dari 20px */
+    background-color: var(--light-card);
+    padding: 12px; /* Perkecil dari 15px */
+    border-radius: 12px; /* Perkecil dari 15px */
+}
+
+body.dark-theme .filter-controls {
+    background-color: var(--dark-card);
+}
+
+.filter-controls select {
+    flex: 1;
+    padding: 10px; /* Perkecil dari 12px */
+    border: 2px solid var(--light-border);
+    border-radius: 8px; /* Perkecil dari 10px */
+    background-color: var(--light-bg);
+    color: var(--light-text);
+    font-size: 0.9rem; /* Tambahkan */
+}
+
+body.dark-theme .filter-controls select {
+    background-color: var(--dark-bg);
+    color: var(--dark-text);
+    border-color: var(--dark-border);
+}
+
+.history-list {
+    background-color: var(--light-card);
+    border-radius: 16px; /* Perkecil dari 20px */
+    padding: 12px; /* Perkecil dari 15px */
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+body.dark-theme .history-list {
+    background-color: var(--dark-card);
+}
+
+/* History Item Styles */
+.history-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px; /* Perkecil dari 15px */
+    margin-bottom: 8px; /* Perkecil dari 10px */
+    background-color: var(--light-bg);
+    border-radius: 10px; /* Perkecil dari 12px */
+    border-left: 5px solid var(--success-color);
+}
+
+body.dark-theme .history-item {
+    background-color: var(--dark-bg);
+}
+
+.history-item.expense {
+    border-left-color: var(--danger-color);
+}
+
+.history-details {
+    flex: 1;
+}
+
+.history-date {
+    font-size: 0.75rem; /* Perkecil dari 0.8rem */
+    color: var(--light-text);
+    opacity: 0.7;
+    margin-bottom: 4px; /* Perkecil dari 5px */
+}
+
+body.dark-theme .history-date {
+    color: var(--dark-text);
+}
+
+/* Milestone Page */
+.milestone-content {
+    background-color: var(--light-card);
+    border-radius: 16px; /* Perkecil dari 20px */
+    padding: 20px; /* Perkecil dari 25px */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+body.dark-theme .milestone-content {
+    background-color: var(--dark-card);
+}
+
+.milestone-progress-container {
+    margin-bottom: 24px; /* Perkecil dari 30px */
+}
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px; /* Perkecil dari 10px */
+    font-size: 0.85rem; /* Perkecil dari 0.9rem */
+    color: var(--light-text);
+}
+
+body.dark-theme .progress-info {
+    color: var(--dark-text);
+}
+
+.progress-bar {
+    height: 12px; /* Perkecil dari 15px */
+    background-color: var(--light-border);
+    border-radius: 8px; /* Perkecil dari 10px */
+    overflow: hidden;
+    margin-bottom: 8px; /* Perkecil dari 10px */
+}
+
+body.dark-theme .progress-bar {
+    background-color: var(--dark-border);
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    border-radius: 8px;
+    transition: width 0.5s ease;
+}
+
+.progress-percent {
+    text-align: center;
+    font-size: 1.2rem; /* Perkecil dari 1.5rem */
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 20px; /* Perkecil dari 25px */
+}
+
+.quote-section {
+    text-align: center;
+    padding: 20px; /* Perkecil dari 25px */
+    margin: 20px 0; /* Perkecil dari 25px */
+    background: rgba(99, 102, 241, 0.05);
+    border-radius: 12px; /* Perkecil dari 15px */
+    border-left: 4px solid var(--primary-color);
+}
+
+body.dark-theme .quote-section {
+    background: rgba(99, 102, 241, 0.1);
+}
+
+.quote-icon {
+    color: var(--primary-color);
+    opacity: 0.5;
+    font-size: 1rem; /* Perkecil dari 1.2rem */
+}
+
+#motivation-quote {
+    font-size: 1rem; /* Perkecil dari 1.2rem */
+    font-style: italic;
+    margin: 12px 0; /* Perkecil dari 15px */
+    color: var(--light-text);
+    line-height: 1.5;
+}
+
+body.dark-theme #motivation-quote {
+    color: var(--dark-text);
+}
+
+.milestone-settings {
+    margin: 20px 0; /* Perkecil dari 25px */
+}
+
+.input-with-button {
+    display: flex;
+    gap: 8px; /* Perkecil dari 10px */
+}
+
+.input-with-button input {
+    flex: 1;
+    padding: 12px; /* Perkecil dari 14px */
+    border: 2px solid var(--light-border);
+    border-radius: 10px; /* Perkecil dari 12px */
+    font-size: 0.9rem; /* Perkecil dari 1rem */
+    background-color: var(--light-bg);
+    color: var(--light-text);
+}
+
+body.dark-theme .input-with-button input {
+    background-color: var(--dark-bg);
+    color: var(--dark-text);
+    border-color: var(--dark-border);
+}
+
+.btn-small {
+    padding: 10px 16px; /* Perkecil dari 12px 20px */
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px; /* Perkecil dari 10px */
+    cursor: pointer;
+    font-weight: 500;
+    white-space: nowrap;
+    font-size: 0.85rem; /* Tambahkan */
+}
+
+/* Settings Page */
+.settings-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: none !important;
+}
+
+body.dark-theme .settings-header {
+    border-bottom-color: var(--dark-border);
+}
+
+.settings-header h2 {
+    font-size: 1.2rem; /* Perkecil */
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.theme-toggle-header {
+    display: flex;
+    gap: 8px;
+}
+
+.theme-btn-header {
+    background: none;
+    border: 2px solid var(--light-border);
+    border-radius: 8px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--light-text);
+    font-size: 1rem;
+}
+
+body.dark-theme .theme-btn-header {
+    border-color: var(--dark-border);
+    color: var(--dark-text);
+}
+
+.theme-btn-header.active {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.settings-section {
+    background-color: var(--light-card);
+    border-radius: 16px; /* Perkecil dari 20px */
+    padding: 20px; /* Perkecil dari 25px */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+body.dark-theme .settings-section {
+    background-color: var(--dark-card);
+}
+
+.settings-item {
+    margin-bottom: 20px; /* Perkecil dari 25px */
+    padding-bottom: 16px; /* Perkecil dari 20px */
+    border-bottom: 1px solid var(--light-border);
+}
+
+body.dark-theme .settings-item {
+    border-bottom-color: var(--dark-border);
+}
+
+.settings-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.settings-item label {
+    display: block;
+    margin-bottom: 8px; /* Perkecil dari 12px */
+    color: var(--light-text);
+    font-weight: 500;
+    font-size: 0.9rem; /* Perkecil dari 0.95rem */
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Perkecil dari 10px */
+}
+
+body.dark-theme .settings-item label {
+    color: var(--dark-text);
+}
+
+.locked-feature {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.locked-feature .radio-label,
+.locked-feature .language-btn,
+.locked-feature .action-btn {
+    background-color: #f3f4f6;
+    color: #9ca3af;
+    border-color: #d1d5db;
+}
+
+body.dark-theme .locked-feature .radio-label,
+body.dark-theme .locked-feature .language-btn,
+body.dark-theme .locked-feature .action-btn {
+    background-color: #374151;
+    color: #9ca3af;
+    border-color: #4b5563;
+}
+
+.locked-feature i.fa-lock {
+    margin-left: 4px;
+    font-size: 0.8rem;
+}
+
+.theme-options {
+    display: flex;
+    gap: 8px; /* Perkecil dari 10px */
+    margin-top: 8px; /* Perkecil dari 10px */
+}
+
+.theme-btn {
+    flex: 1;
+    padding: 12px; /* Perkecil dari 15px */
+    border: 2px solid var(--light-border);
+    border-radius: 10px; /* Perkecil dari 12px */
+    background-color: var(--light-bg);
+    color: var(--light-text);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px; /* Perkecil dari 8px */
+    font-size: 0.85rem; /* Perkecil dari 0.9rem */
+}
+
+body.dark-theme .theme-btn {
+    background-color: var(--dark-bg);
+    color: var(--dark-text);
+    border-color: var(--dark-border);
+}
+
+.theme-btn.active {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.language-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px; /* Perkecil dari 10px */
+    margin-top: 8px; /* Perkecil dari 10px */
+}
+
+.language-btn {
+    padding: 12px; /* Perkecil dari 15px */
+    border: 2px solid var(--light-border);
+    border-radius: 10px; /* Perkecil dari 12px */
+    background-color: var(--light-bg);
+    color: var(--light-text);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px; /* Perkecil dari 10px */
+    font-size: 0.85rem; /* Perkecil dari 0.9rem */
+}
+
+body.dark-theme .language-btn {
+    background-color: var(--dark-bg);
+    color: var(--dark-text);
+    border-color: var(--dark-border);
+}
+
+.language-btn.active {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.flag {
+    font-size: 1rem; /* Perkecil dari 1.2rem */
+}
+
+/* Admin Toggle */
+.admin-toggle {
+    display: flex;
+    align-items: center;
+    gap: 12px; /* Perkecil dari 15px */
+    margin-top: 8px; /* Perkecil dari 10px */
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 52px; /* Perkecil dari 60px */
+    height: 28px; /* Perkecil dari 34px */
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 28px; /* Perkecil dari 34px */
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 20px; /* Perkecil dari 26px */
+    width: 20px; /* Perkecil dari 26px */
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: var(--primary-color);
+}
+
+input:checked + .slider:before {
+    transform: translateX(24px); /* Perkecil dari 26px */
+}
+
+.toggle-text {
+    font-size: 0.85rem; /* Perkecil dari 0.9rem */
+    color: var(--light-text);
+    font-weight: 500;
+}
+
+body.dark-theme .toggle-text {
+    color: var(--dark-text);
+}
+
+.admin-password {
+    margin-top: 12px;
+    padding: 12px;
+    background: rgba(99, 102, 241, 0.05);
+    border-radius: 10px;
+    border-left: 4px solid var(--primary-color);
+}
+
+body.dark-theme .admin-password {
+    background: rgba(99, 102, 241, 0.1);
+}
+
+.admin-password label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 0.9rem;
+}
+
+.admin-password input {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid var(--light-border);
+    border-radius: 8px;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+.note {
+    font-size: 0.8rem; /* Perkecil dari 0.85rem */
+    color: var(--light-text);
+    opacity: 0.7;
+    margin-top: 8px; /* Perkecil dari 10px */
+    line-height: 1.4;
+}
+
+body.dark-theme .note {
+    color: var(--dark-text);
+}
+
+.settings-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Perkecil dari 12px */
+    margin-top: 8px; /* Perkecil dari 10px */
+}
+
+.action-btn {
+    padding: 14px; /* Perkecil dari 16px */
+    border: 2px solid var(--light-border);
+    border-radius: 10px; /* Perkecil dari 12px */
+    background-color: var(--light-bg);
+    color: var(--light-text);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Perkecil dari 12px */
+    font-weight: 500;
+    font-size: 0.9rem; /* Perkecil dari 0.95rem */
+}
+
+body.dark-theme .action-btn {
+    background-color: var(--dark-bg);
+    color: var(--dark-text);
+    border-color: var(--dark-border);
+}
+
+.action-btn.delete-btn {
+    color: var(--danger-color);
+    border-color: var(--danger-color);
+    background: rgba(239, 68, 68, 0.1);
+}
+
+body.dark-theme .action-btn.delete-btn {
+    background: rgba(239, 68, 68, 0.2);
+}
+
+.settings-save {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid var(--light-border);
+}
+
+body.dark-theme .settings-save {
+    border-top-color: var(--dark-border);
+}
+
+.save-settings-btn {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.save-settings-btn:not(.saved) {
+    background: #374151; /* Warna biru gelap */
+    color: white;
+}
+
+body.dark-theme .save-settings-btn:not(.saved) {
+    background: #1f2937;
+}
+
+.app-info {
+    text-align: center;
+    margin-top: 24px; /* Perkecil dari 30px */
+    padding-top: 16px; /* Perkecil dari 20px */
+    border-top: 1px solid var(--light-border);
+    color: var(--light-text);
+    opacity: 0.7;
+    font-size: 0.9rem; /* Tambahkan */
+}
+
+body.dark-theme .app-info {
+    color: var(--dark-text);
+    border-top-color: var(--dark-border);
+}
+
+.version {
+    font-size: 0.8rem; /* Perkecil dari 0.85rem */
+    margin-top: 4px; /* Perkecil dari 5px */
+}
+
+/* Font Size Classes */
+body.font-small {
+    font-size: 12px;
+}
+
+body.font-medium {
+    font-size: 14px;
+}
+
+body.font-large {
+    font-size: 16px;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .container {
+        padding: 10px;
+        padding-bottom: 80px; /* Perkecil dari 95px */
+    }
+    
+    .header-left h1 {
+        font-size: 1.3rem; /* Perkecil dari 1.5rem */
+    }
+    
+    .live-clock {
+        font-size: 1.8rem; /* Perkecil dari 2.2rem */
+    }
+    
+    .balance-amount {
+        font-size: 1.7rem; /* Perkecil dari 2rem */
+    }
+    
+    .language-options {
+        grid-template-columns: 1fr;
+    }
+    
+    .navigation {
+        padding: 8px 5px; /* Perkecil */
+    }
+    
+    .nav-btn {
+        padding: 5px 6px; /* Perkecil dari 6px 8px */
+        font-size: 0.65rem; /* Perkecil dari 0.7rem */
+        gap: 3px; /* Perkecil dari 4px */
+    }
+    
+    .nav-btn i {
+        font-size: 1rem; /* Perkecil dari 1.2rem */
+    }
+    
+    .nav-btn.active {
+        transform: translateY(-3px);
+    }
+}
+
+@media (max-height: 700px) {
+    .navigation {
+        padding: 6px 5px; /* Perkecil */
+    }
+    
+    .nav-btn i {
+        font-size: 0.9rem; /* Perkecil dari 1.1rem */
+    }
+    
+    .nav-btn span {
+        font-size: 0.6rem; /* Perkecil dari 0.65rem */
+    }
+}
